@@ -32,6 +32,10 @@ if (preg_match("#^data:image/(\w+);base64,(.*)$#", $src, $matches)) {
         die('{"jsonrpc" : "2.0", "result" : "'.$previewUrl.'preview/'.$filename.'", "id" : "id"}');
     }
 ```
+## 0x00 python usage
+`python exp.py http://192.168.2.18/webuploader-0.1.15-Demo/server/preview.php`
+
+![](./webuploader.jpg)
 
 #### php_webshell
 
