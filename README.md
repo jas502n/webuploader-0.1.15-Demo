@@ -2,6 +2,36 @@
 
 #### 简介：百度WebUploader组件存在文件上传漏洞。该漏洞是由于WebUploader组件上传页面对文件类型或文件扩展名过滤不严所致，攻击者可利用漏洞直接上传或简单绕过限制上传脚本文件，执行系统命令，获取网站服务器权限。
 
+#### server/preview.php
+```
+if (preg_match("#^data:image/(\w+);base64,(.*)$#", $src, $matches)) {
+
+    $previewUrl = sprintf(
+        "%s://%s%s",
+        isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
+        $_SERVER['HTTP_HOST'],
+        $_SERVER['REQUEST_URI']
+    );
+    $previewUrl = str_replace("preview.php", "", $previewUrl);
+
+
+    $base64 = $matches[2];
+    $type = $matches[1];
+    if ($type === 'jpeg') {
+        $type = 'jpg';
+    }
+
+    $filename = md5($base64).".$type";
+    $filePath = $DIR.DIRECTORY_SEPARATOR.$filename;
+
+    if (file_exists($filePath)) {
+        die('{"jsonrpc" : "2.0", "result" : "'.$previewUrl.'preview/'.$filename.'", "id" : "id"}');
+    } else {
+        $data = base64_decode($base64);
+        file_put_contents($filePath, $data);
+        die('{"jsonrpc" : "2.0", "result" : "'.$previewUrl.'preview/'.$filename.'", "id" : "id"}');
+    }
+```
 
 #### php_webshell
 
