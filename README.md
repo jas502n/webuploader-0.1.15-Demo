@@ -95,3 +95,9 @@ Content-Length: 142
 ![](./phpinfo.jpg)
 
 ![](./cmd.jpg)
+
+### 参考链接
+
+https://www.cnvd.org.cn/flaw/show/CNVD-2018-26054
+
+payload form 圈子
